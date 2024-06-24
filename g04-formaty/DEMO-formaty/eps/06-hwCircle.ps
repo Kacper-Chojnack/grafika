@@ -1,0 +1,21 @@
+%!PS-Adobe-1.0
+% Domyślną jednostką w PostScripcie jest 1 punkt =1/72 cala,
+% przeliczamy wszystko na mimimetry.
+72 25.4 div           % 1 mm = 72/25.4 punktów
+dup                   % dublować wartość na stosie
+scale                 % skalować (współczynnik ze stosu)
+100 100 translate     % przesunąć początek w punkt (100mm, 100mm)
+
+/Times-Roman findfont % wziąć font Times-Roman
+10 scalefont          % skalować do 10 (mm)
+setfont               % ustalić wybrany font
+
+0 30 330 {            % pętla od 0 do 330 s krokiem 30
+  gsave                 % zapamiętać bieżącą transformację
+    rotate              % obrót (kąt ze stosu)
+    15 0 moveto         % przesunięcie o (15mm, 0mm)
+    (Hello, World!) show    % napisać słowo bieżącą czcionką
+  grestore              % przywrócić przekształcenie
+} for                 % koniec pętli for
+
+showpage              % wydrukować stronę
